@@ -1,0 +1,41 @@
+import java.util.*;
+class Solution {
+    public ListNode mergeTwoLists(ListNode head1, ListNode head2) {
+        if(head1 == null)
+            return head2;
+        if(head2 == null)
+            return head1;
+        // Decide the head Node
+        ListNode ansHead;
+        if(head1.val < head2.val){
+            ansHead = head1;
+            head1 = head1.next;
+        } else {
+            ansHead = head2;
+            head2 = head2.next;
+        }
+        // to refer to the last node of result LL
+        ListNode temp = ansHead;
+        // you have the ansHead referrring to the head
+        // of your answer LL
+        while(head1 != null && head2 != null){
+            if(head1.val < head2.val){
+                temp.next = head1;
+                head1 = head1.next;
+                temp = temp.next;
+            } else {
+                temp.next = head2;
+                head2 = head2.next;
+                temp = temp.next;
+            }
+        }
+        // One of your LLs has finished
+        if(head1 != null){
+            temp.next = head1;
+        }
+        if(head2 != null) {
+            temp.next = head2;
+        }
+        return ansHead;
+    }
+}
