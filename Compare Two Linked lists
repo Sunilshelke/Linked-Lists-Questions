@@ -1,0 +1,77 @@
+import java.io.*;
+import java.util.*;
+public class Main
+{
+  public static void main(String[] args)
+        {
+                Scanner sc=new Scanner(System.in );
+                int n=sc.nextInt();
+                int m=sc.nextInt();
+                Linked l1=new Linked();
+                for(int i=0; i<n; i++)
+                        {
+                                l1.insertatend(sc.nextInt());
+                        }
+                Linked l2=new Linked ();
+                for(int i=0; i<m; i++)
+                        {
+                                l2.insertatend(sc.nextInt());
+                        }
+                l1.issame(l1.head, l2.head);
+  }
+}
+ class node
+{
+                 int val;
+                 node next;
+                 node (int val)
+                 {
+                         this.val=val;
+                 }
+}
+class Linked
+{
+        node head;
+        void insertatend(int val)
+        {
+                node n=new node(val);
+                if(head==null)
+                {
+                        head=n;
+                        return;
+                }
+                node temp=head;
+                while(temp.next!=null)
+                        {
+                                temp=temp.next;
+                        }
+                temp.next=n;
+        }
+        void issame(node head1, node head2)
+        {
+                while(head1 !=null && head2!= null)
+                        {
+                                if(head1.val== head2.val)
+                                {
+                                        head1=head1.next;
+                                        head2=head2.next;
+                                }
+                                else
+                                {
+                                        System.out.println(0);
+                                        return;
+                                }
+                                
+                        }
+                if(head1!=null || head2!=null)
+                {
+                        System.out.println(0);
+                }
+                else
+                {
+                        System.out.println(1);
+                }
+                        
+        }
+}
+
